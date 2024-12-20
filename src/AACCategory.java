@@ -18,7 +18,7 @@ public class AACCategory implements AACPage {
 	 */
 	public AACCategory(String name) {
 		this.name = name;
-		this.contents = new AssociativeArray<String, String>();
+		this.contents = new AssociativeArray<>();
 	} //AACCategory
 	
 	/**
