@@ -1,22 +1,25 @@
 import java.util.NoSuchElementException;
+import util.AssociativeArray;
 
 /**
  * Represents the mappings for a single category of items that should
  * be displayed
  * 
- * @author Catie Baker & YOUR NAME HERE
+ * @author Catie Baker & Sebastian Manza
  *
  */
 public class AACCategory implements AACPage {
 
-	
+	String name;
+	public AssociativeArray<String, String> contents;
 	/**
 	 * Creates a new empty category with the given name
 	 * @param name the name of the category
 	 */
 	public AACCategory(String name) {
-
-	}
+		this.name = name;
+		this.contents = new AssociativeArray<String, String>();
+	} //AACCategory
 	
 	/**
 	 * Adds the image location, text pairing to the category
@@ -24,7 +27,7 @@ public class AACCategory implements AACPage {
 	 * @param text the text that image should speak
 	 */
 	public void addItem(String imageLoc, String text) {
-
+		this.contents.set(imageLoc, text);
 	}
 
 	/**
@@ -32,16 +35,20 @@ public class AACCategory implements AACPage {
 	 * @return the array of image locations; if there are no images,
 	 * it should return an empty array
 	 */
-	public String[] getImageLocs() {
-		return null;
-	}
+  public String[] getImageLocs() {
+    String[] returnStr = new String[this.contents.size()];
+		for(int i = 0; i < returnStr.length; i++) {
+			returnStr[i] = this.contents.getKey(i);
+		} //for
+		return returnStr;
+  } // getImageLocs()
 
 	/**
 	 * Returns the name of the category
 	 * @return the name of the category
 	 */
 	public String getCategory() {
-		return "";
+		return this.name; //getCategory
 	}
 
 	/**
@@ -51,9 +58,9 @@ public class AACCategory implements AACPage {
 	 * @throws NoSuchElementException if the image provided is not in the current
 	 * 		   category
 	 */
-	public String select(String imageLoc) {
-		return "";
-	}
+	public String select(String imageLoc) throws NoSuchElementException{
+		return this.contents.get(imageLoc); 
+	} //select(imageLoc)
 
 	/**
 	 * Determines if the provided images is stored in the category
@@ -61,6 +68,6 @@ public class AACCategory implements AACPage {
 	 * @return true if it is in the category, false otherwise
 	 */
 	public boolean hasImage(String imageLoc) {
-		return false;
+		return this.contents.hasKey(imageLoc);
 	}
 }

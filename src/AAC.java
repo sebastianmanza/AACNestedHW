@@ -23,9 +23,9 @@ import javax.speech.Central;
 import javax.speech.synthesis.Synthesizer;
 import javax.speech.synthesis.SynthesizerModeDesc;
 
+
 /**
- * Creates a GUI that has a grid of images that represent the communication
- * device of the AAC.
+ * Creates a GUI that has a grid of images that represent the communication device of the AAC.
  * 
  * @author Catie Baker
  *
@@ -45,8 +45,7 @@ public class AAC implements ActionListener {
 	/**
 	 * Creates the AAC display for the file provided
 	 * 
-	 * @param filename the name of the file that contains the images and text that
-	 *                 will be in the AAC
+	 * @param filename the name of the file that contains the images and text that will be in the AAC
 	 */
 	public AAC(String filename) {
 		this.page = new AACCategory("test");
@@ -66,7 +65,7 @@ public class AAC implements ActionListener {
 	/**
 	 * Loads the images in the screen in a width by length grid
 	 * 
-	 * @param width  the number of images across to display
+	 * @param width the number of images across to display
 	 * @param length the number of images down to display
 	 */
 	public void loadImages(int width, int length) {
@@ -152,7 +151,8 @@ public class AAC implements ActionListener {
 
 		try {
 			// Set property as Kevin Dictionary
-			System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us" + ".cmu_us_kal.KevinVoiceDirectory");
+			System.setProperty("freetts.voices",
+					"com.sun.speech.freetts.en.us" + ".cmu_us_kal.KevinVoiceDirectory");
 
 			// Register Engine
 			Central.registerEngineCentral("com.sun.speech.freetts" + ".jsapi.FreeTTSEngineCentral");
@@ -171,9 +171,8 @@ public class AAC implements ActionListener {
 	}
 
 	/**
-	 * Responds to the click of a button. If the button is a category or action
-	 * (e.g. home, next), it updates the screen. If the button is an image within
-	 * the category, it speaks aloud the text
+	 * Responds to the click of a button. If the button is a category or action (e.g. home, next), it
+	 * updates the screen. If the button is an image within the category, it speaks aloud the text
 	 */
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
